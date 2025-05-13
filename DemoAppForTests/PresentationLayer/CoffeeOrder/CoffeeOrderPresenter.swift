@@ -19,7 +19,7 @@ final class CoffeeOrderPresenter: ICoffeeOrderPresenter {
     // MARK: - Properties
     
     weak var view: ICoffeeOrderView?
-    private let coffeeService: CoffeeService
+    private let coffeeService: CoffeeServiceProtocol
     
     // MARK: - Init
     

@@ -7,6 +7,21 @@
 
 import Foundation
 
+protocol CoffeeServiceProtocol: AnyObject {
+    func fetchCoffees() async throws -> [Coffee]
+    
+    func placeOrder(
+        coffeeId: Int,
+        quantity: Int,
+        customerName: String
+    ) async throws -> Order
+    
+    func getOrderStatus(orderId: Int) async throws -> Order
+    
+    func cancelOrder(orderId: Int) async throws -> Bool
+}
+
+
 // MARK: - Errors
 
 enum CoffeeError: Error {
@@ -16,7 +31,7 @@ enum CoffeeError: Error {
 
 // MARK: - Service
 
-final class CoffeeService {
+final class CoffeeService: CoffeeServiceProtocol {
     
     // In-memory storage for mock data
     private var availableCoffees: [Coffee] = []
